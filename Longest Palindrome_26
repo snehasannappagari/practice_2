@@ -1,0 +1,27 @@
+class Solution {
+    int maxLength = 0;
+    int low = 0;
+    public String longestPalindrome(String string) {
+        char[] inp = string.toCharArray();
+        if(string.length() < 2) {
+            return string;
+        }
+        
+        for(int a = 0; a<inp.length; a++) {
+            expandPalindrome(inp, a, a);
+            expandPalindrome(inp, a, a+1);
+        }
+        return string.substring(low, low+maxLength);
+    }
+    
+    public void expandPalindrome(char[] string, int b, int c) {
+        while(b >= 0 && c < string.length && string[b] == string[c]) {
+            b--;
+            c++;
+        }
+        if(maxLength < c - b - 1) {
+            maxLength = c - b - 1;
+            low = b+1;
+        }
+    }
+}  
