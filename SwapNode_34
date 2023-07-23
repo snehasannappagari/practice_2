@@ -1,0 +1,26 @@
+class Solution {
+    public ListNode swapPairs(ListNode h) {
+        final int len = Length(h);
+    ListNode dup = new ListNode(0, h);
+    ListNode previous = dup;
+    ListNode current = h;
+
+    for (int i = 0; i < len / 2; ++i) {
+      ListNode next = current.next;
+      current.next = next.next;
+      next.next = current;
+      previous.next = next;
+      previous = current;
+      current = current.next;
+    }
+
+    return dup.next;
+  }
+
+  private int Length(ListNode head) {
+    int length = 0;
+    for (ListNode current = head; current != null; current = current.next)
+      ++length;
+    return length;
+  }
+    }
