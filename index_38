@@ -1,0 +1,17 @@
+class Solution {
+    public int strStr(String hs, String ne) {
+        int hl=hs.length();
+        int nl=ne.length();
+        if(hl<nl)
+            return -1;
+        for(int i=0;i<=hs.length()-ne.length();i++){
+            int j=0;
+            while(j<ne.length() && hs.charAt(i+j)==ne.charAt(j))
+                j++;
+            if(j==ne.length()){
+                return i;
+            }
+        }
+        return -1;
+    }
+}
